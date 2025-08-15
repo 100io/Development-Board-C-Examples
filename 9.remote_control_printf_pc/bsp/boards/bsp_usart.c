@@ -6,14 +6,14 @@ extern DMA_HandleTypeDef hdma_usart1_tx;
 void usart1_tx_dma_init(void)
 {
     //enable the DMA transfer for the receiver request
-    //Ê¹ÄÜDMA´®¿Ú½ÓÊÕ
+    //ä½¿èƒ½DMAä¸²å£æŽ¥æ”¶
     SET_BIT(huart1.Instance->CR3, USART_CR3_DMAT);
 }
 void usart1_tx_dma_enable(uint8_t *data, uint16_t len)
 {
 
     //disable DMA
-    //Ê§Ð§DMA
+    //å¤±æ•ˆDMA
     __HAL_DMA_DISABLE(&hdma_usart1_tx);
     while(hdma_usart1_tx.Instance->CR & DMA_SxCR_EN)
     {
@@ -21,19 +21,19 @@ void usart1_tx_dma_enable(uint8_t *data, uint16_t len)
     }
 
     //clear flag
-    //Çå³ý±êÖ¾Î»
+    //æ¸…é™¤æ ‡å¿—ä½
     __HAL_DMA_CLEAR_FLAG(&hdma_usart1_tx, DMA_HISR_TCIF7);
     __HAL_DMA_CLEAR_FLAG(&hdma_usart1_tx, DMA_HISR_HTIF7);
 
     //set data address
-    //ÉèÖÃÊý¾ÝµØÖ·
+    //è®¾ç½®æ•°æ®åœ°å€
     hdma_usart1_tx.Instance->M0AR = (uint32_t)(data);
     //set data length
-    //ÉèÖÃÊý¾Ý³¤¶È
+    //è®¾ç½®æ•°æ®é•¿åº¦
     hdma_usart1_tx.Instance->NDTR = len;
 
     //enable DMA
-    //Ê¹ÄÜDMA
+    //ä½¿èƒ½DMA
     __HAL_DMA_ENABLE(&hdma_usart1_tx);
 }
 

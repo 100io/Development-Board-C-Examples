@@ -100,7 +100,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
         //set GPIO output high level
-        //ÉèÖÃGPIO Êä³ö¸ßµçÆ½
+        //è®¾ç½®GPIO è¾“å‡ºé«˜ç”µå¹³
         HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_SET);
         HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_SET);
         HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_SET);

@@ -12,7 +12,7 @@
   * @retval         none
   */
 /**
-  * @brief          ÂÌµÆÈÎÎñ
+  * @brief          Ã‚ÃŒÂµÃ†ÃˆÃŽÃŽÃ±
   * @param[in]      argument: NULL
   * @retval         none
   */

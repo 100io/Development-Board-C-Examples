@@ -73,7 +73,7 @@ void usart_printf(const char *fmt,...)
     va_start(ap, fmt);
 
     //return length of string 
-    //·µ»Ø×Ö·û´®³¤¶È
+    //Â·ÂµÂ»Ã˜Ã—Ã–Â·Ã»Â´Â®Â³Â¤Â¶Ãˆ
     len = vsprintf((char *)tx_buf, fmt, ap);
 
     va_end(ap);

@@ -4,9 +4,9 @@
   * @brief      use bmi088 to calculate the euler angle. no use ist8310, so only
   *             enable data ready pin to save cpu time.enalbe bmi088 data ready
   *             enable spi DMA to save the time spi transmit
-  *             Ö÷ÒªÀûÓÃÍÓÂİÒÇbmi088£¬´ÅÁ¦¼Æist8310£¬Íê³É×ËÌ¬½âËã£¬µÃ³öÅ·À­½Ç£¬
-  *             Ìá¹©Í¨¹ıbmi088µÄdata ready ÖĞ¶ÏÍê³ÉÍâ²¿´¥·¢£¬¼õÉÙÊı¾İµÈ´ıÑÓ³Ù
-  *             Í¨¹ıDMAµÄSPI´«Êä½ÚÔ¼CPUÊ±¼ä.
+  *             ä¸»è¦åˆ©ç”¨é™€èºä»ªbmi088ï¼Œç£åŠ›è®¡ist8310ï¼Œå®Œæˆå§¿æ€è§£ç®—ï¼Œå¾—å‡ºæ¬§æ‹‰è§’ï¼Œ
+  *             æä¾›é€šè¿‡bmi088çš„data ready ä¸­æ–­å®Œæˆå¤–éƒ¨è§¦å‘ï¼Œå‡å°‘æ•°æ®ç­‰å¾…å»¶è¿Ÿ
+  *             é€šè¿‡DMAçš„SPIä¼ è¾“èŠ‚çº¦CPUæ—¶é—´.
   * @note       
   * @history
   *  Version    Date            Author          Modification
@@ -37,7 +37,7 @@
 #include "math.h"
 
 
-#define IMU_temp_PWM(pwm)  imu_pwm_set(pwm)                    //pwm¸ø¶¨
+#define IMU_temp_PWM(pwm)  imu_pwm_set(pwm)                    //pwmç»™å®š
 
 
 /**
@@ -46,8 +46,8 @@
   * @retval         none
   */
 /**
-  * @brief          ¿ØÖÆbmi088µÄÎÂ¶È
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          æ§åˆ¶bmi088çš„æ¸©åº¦
+  * @param[in]      temp:bmi088çš„æ¸©åº¦
   * @retval         none
   */
 static void imu_temp_control(fp32 temp);
@@ -58,8 +58,8 @@ static void imu_temp_control(fp32 temp);
   * @retval         none
   */
 /**
-  * @brief          ¸ù¾İimu_update_flagµÄÖµ¿ªÆôSPI DMA
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          æ ¹æ®imu_update_flagçš„å€¼å¼€å¯SPI DMA
+  * @param[in]      temp:bmi088çš„æ¸©åº¦
   * @retval         none
   */
 static void imu_cmd_spi_dma(void);
@@ -101,7 +101,7 @@ static pid_type_def imu_temp_pid;
 
 
 fp32 INS_quat[4] = {0.0f, 0.0f, 0.0f, 0.0f};
-fp32 INS_angle[3] = {0.0f, 0.0f, 0.0f};      //euler angle, unit rad.Å·À­½Ç µ¥Î» rad
+fp32 INS_angle[3] = {0.0f, 0.0f, 0.0f};      //euler angle, unit rad.æ¬§æ‹‰è§’ å•ä½ rad
 
 
 
@@ -111,7 +111,7 @@ fp32 INS_angle[3] = {0.0f, 0.0f, 0.0f};      //euler angle, unit rad.Å·À­½Ç µ¥Î»
   * @retval         none
   */
 /**
-  * @brief          imuÈÎÎñ, ³õÊ¼»¯ bmi088, ist8310, ¼ÆËãÅ·À­½Ç
+  * @brief          imuä»»åŠ¡, åˆå§‹åŒ– bmi088, ist8310, è®¡ç®—æ¬§æ‹‰è§’
   * @param[in]      pvParameters: NULL
   * @retval         none
   */
@@ -136,7 +136,7 @@ void INS_task(void const *pvParameters)
 
 
     //get the handle of task
-    //»ñÈ¡µ±Ç°ÈÎÎñµÄÈÎÎñ¾ä±ú£¬
+    //è·å–å½“å‰ä»»åŠ¡çš„ä»»åŠ¡å¥æŸ„ï¼Œ
     INS_task_local_handler = xTaskGetHandle(pcTaskGetName(NULL));
 
     //set spi frequency
@@ -155,7 +155,7 @@ void INS_task(void const *pvParameters)
     while (1)
     {
         //wait spi DMA tansmit done
-        //µÈ´ıSPI DMA´«Êä
+        //ç­‰å¾…SPI DMAä¼ è¾“
         while (ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != pdPASS)
         {
         }
@@ -214,8 +214,8 @@ void get_angle(fp32 q[4], fp32 *yaw, fp32 *pitch, fp32 *roll)
   * @retval         none
   */
 /**
-  * @brief          ¿ØÖÆbmi088µÄÎÂ¶È
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          æ§åˆ¶bmi088çš„æ¸©åº¦
+  * @param[in]      temp:bmi088çš„æ¸©åº¦
   * @retval         none
   */
 static void imu_temp_control(fp32 temp)
@@ -234,14 +234,14 @@ static void imu_temp_control(fp32 temp)
     }
     else
     {
-        //ÔÚÃ»ÓĞ´ïµ½ÉèÖÃµÄÎÂ¶È£¬Ò»Ö±×î´ó¹¦ÂÊ¼ÓÈÈ
+        //åœ¨æ²¡æœ‰è¾¾åˆ°è®¾ç½®çš„æ¸©åº¦ï¼Œä¸€ç›´æœ€å¤§åŠŸç‡åŠ çƒ­
         //in beginning, max power
         if (temp > 45.0f)
         {
             temp_constant_time++;
             if (temp_constant_time > 200)
             {
-                //´ïµ½ÉèÖÃÎÂ¶È£¬½«»ı·ÖÏîÉèÖÃÎªÒ»°ë×î´ó¹¦ÂÊ£¬¼ÓËÙÊÕÁ²
+                //è¾¾åˆ°è®¾ç½®æ¸©åº¦ï¼Œå°†ç§¯åˆ†é¡¹è®¾ç½®ä¸ºä¸€åŠæœ€å¤§åŠŸç‡ï¼ŒåŠ é€Ÿæ”¶æ•›
                 //
                 first_temperate = 1;
                 imu_temp_pid.Iout = MPU6500_TEMP_PWM_MAX / 2.0f;
@@ -287,7 +287,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     else if(GPIO_Pin == GPIO_PIN_0)
     {
         //wake up the task
-        //»½ĞÑÈÎÎñ
+        //å”¤é†’ä»»åŠ¡
         if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
         {
             static BaseType_t xHigherPriorityTaskWoken;
@@ -305,8 +305,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   * @retval         none
   */
 /**
-  * @brief          ¸ù¾İimu_update_flagµÄÖµ¿ªÆôSPI DMA
-  * @param[in]      temp:bmi088µÄÎÂ¶È
+  * @brief          æ ¹æ®imu_update_flagçš„å€¼å¼€å¯SPI DMA
+  * @param[in]      temp:bmi088çš„æ¸©åº¦
   * @retval         none
   */
 static void imu_cmd_spi_dma(void)
@@ -314,7 +314,7 @@ static void imu_cmd_spi_dma(void)
     UBaseType_t uxSavedInterruptStatus;
     uxSavedInterruptStatus = taskENTER_CRITICAL_FROM_ISR();
 
-    //¿ªÆôÍÓÂİÒÇµÄDMA´«Êä
+    //å¼€å¯é™€èºä»ªçš„DMAä¼ è¾“
     if( (gyro_update_flag & (1 << IMU_DR_SHFITS) ) && !(hspi1.hdmatx->Instance->CR & DMA_SxCR_EN) && !(hspi1.hdmarx->Instance->CR & DMA_SxCR_EN)
     && !(accel_update_flag & (1 << IMU_SPI_SHFITS)) && !(accel_temp_update_flag & (1 << IMU_SPI_SHFITS)))
     {
@@ -326,7 +326,7 @@ static void imu_cmd_spi_dma(void)
         taskEXIT_CRITICAL_FROM_ISR(uxSavedInterruptStatus);
         return;
     }
-    //¿ªÆô¼ÓËÙ¶È¼ÆµÄDMA´«Êä
+    //å¼€å¯åŠ é€Ÿåº¦è®¡çš„DMAä¼ è¾“
     if((accel_update_flag & (1 << IMU_DR_SHFITS)) && !(hspi1.hdmatx->Instance->CR & DMA_SxCR_EN) && !(hspi1.hdmarx->Instance->CR & DMA_SxCR_EN)
     && !(gyro_update_flag & (1 << IMU_SPI_SHFITS)) && !(accel_temp_update_flag & (1 << IMU_SPI_SHFITS)))
     {
@@ -365,7 +365,7 @@ void DMA2_Stream2_IRQHandler(void)
         __HAL_DMA_CLEAR_FLAG(hspi1.hdmarx, __HAL_DMA_GET_TC_FLAG_INDEX(hspi1.hdmarx));
 
         //gyro read over
-        //ÍÓÂİÒÇ¶ÁÈ¡Íê±Ï
+        //é™€èºä»ªè¯»å–å®Œæ¯•
         if(gyro_update_flag & (1 << IMU_SPI_SHFITS))
         {
             gyro_update_flag &= ~(1 << IMU_SPI_SHFITS);
@@ -376,7 +376,7 @@ void DMA2_Stream2_IRQHandler(void)
         }
 
         //accel read over
-        //¼ÓËÙ¶È¼Æ¶ÁÈ¡Íê±Ï
+        //åŠ é€Ÿåº¦è®¡è¯»å–å®Œæ¯•
         if(accel_update_flag & (1 << IMU_SPI_SHFITS))
         {
             accel_update_flag &= ~(1 << IMU_SPI_SHFITS);
@@ -385,7 +385,7 @@ void DMA2_Stream2_IRQHandler(void)
             HAL_GPIO_WritePin(CS1_ACCEL_GPIO_Port, CS1_ACCEL_Pin, GPIO_PIN_SET);
         }
         //temperature read over
-        //ÎÂ¶È¶ÁÈ¡Íê±Ï
+        //æ¸©åº¦è¯»å–å®Œæ¯•
         if(accel_temp_update_flag & (1 << IMU_SPI_SHFITS))
         {
             accel_temp_update_flag &= ~(1 << IMU_SPI_SHFITS);

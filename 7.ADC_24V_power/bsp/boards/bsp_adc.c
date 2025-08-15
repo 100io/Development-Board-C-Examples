@@ -54,7 +54,7 @@ fp32 get_battery_voltage(void)
     uint16_t adcx = 0;
 
     adcx = adcx_get_chx_value(&hadc3, ADC_CHANNEL_8);
-    //(22K ¦¸ + 200K ¦¸)  / 22K ¦¸ = 10.090909090909090909090909090909
+    //(22K Â¦Â¸ + 200K Â¦Â¸)  / 22K Â¦Â¸ = 10.090909090909090909090909090909
     voltage =  (fp32)adcx * voltage_vrefint_proportion * 10.090909090909090909090909090909f;
 
     return voltage;

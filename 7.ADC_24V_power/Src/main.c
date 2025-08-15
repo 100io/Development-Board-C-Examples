@@ -95,7 +95,7 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
     //use vrefint voltage to calibrate
-    //Ê¹ÓÃ»ù×¼µçÑ¹À´Ğ£×¼
+    //ä½¿ç”¨åŸºå‡†ç”µå‹æ¥æ ¡å‡†
     init_vrefint_reciprocal();
   /* USER CODE END 2 */
 
@@ -107,13 +107,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
         //get battery voltage
-        //»ñÈ¡µçÔ´µçÑ¹
+        //è·å–ç”µæºç”µå‹
         voltage = get_battery_voltage();
         //get chip temperate
-        //»ñÈ¡Æ¬ÄÚÎÂ¶È
+        //è·å–ç‰‡å†…æ¸©åº¦
         temperature = get_temprate();
         //get handware version
-        //»ñÈ¡Ó²¼ş°æ±¾
+        //è·å–ç¡¬ä»¶ç‰ˆæœ¬
         handware_version = get_hardware_version();
         HAL_Delay(100);
   }

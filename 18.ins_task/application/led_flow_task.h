@@ -1,7 +1,7 @@
 /**
   ****************************(C) COPYRIGHT 2019 DJI****************************
   * @file       led_trigger_task.c/h
-  * @brief      led RGB show.led RGBµ∆–ß°£
+  * @brief      led RGB show.led RGB¬µ√Ü√ê¬ß¬°¬£
   * @note       
   * @history
   *  Version    Date            Author          Modification
@@ -26,7 +26,7 @@
   * @retval         none
   */
 /**
-  * @brief          led RGB»ŒŒÒ
+  * @brief          led RGB√à√é√é√±
   * @param[in]      pvParameters: NULL
   * @retval         none
   */

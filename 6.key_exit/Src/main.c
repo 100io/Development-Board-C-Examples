@@ -57,7 +57,7 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 //backgroud program
-//∫ÛÃ®≥Ã–Ú
+//ÂêéÂè∞Á®ãÂ∫è
 uint8_t exit_flag = 0;
 uint8_t rising_falling_flag;
 
@@ -67,8 +67,8 @@ uint8_t rising_falling_flag;
   * @retval         none
   */
 /**
-  * @brief          Õ‚≤ø÷–∂œªÿµ˜
-  * @param[in]      GPIO_Pin:“˝Ω≈∫≈
+  * @brief          Â§ñÈÉ®‰∏≠Êñ≠ÂõûË∞É
+  * @param[in]      GPIO_Pin:ÂºïËÑöÂè∑
   * @retval         none
   */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
@@ -115,7 +115,7 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
     //set led dark
-    //πÿ±’led
+    //ÂÖ≥Èó≠led
     HAL_GPIO_WritePin(LED_R_GPIO_Port, LED_R_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_RESET);
@@ -131,14 +131,14 @@ int main(void)
 
 
         //foreground program
-        //«∞Ã®≥Ã–Ú
+        //ÂâçÂè∞Á®ãÂ∫è
         if(exit_flag == 1)
         {
             exit_flag = 2;
             if(rising_falling_flag == GPIO_PIN_RESET)
             {
                 //debouce
-                //œ˚∂∂
+                //Ê∂àÊäñ
                 HAL_Delay(20);
                 if(HAL_GPIO_ReadPin(KEY_GPIO_Port, KEY_Pin) == GPIO_PIN_RESET)
                 {
@@ -153,7 +153,7 @@ int main(void)
             else if(rising_falling_flag == GPIO_PIN_SET)
             {
                 //debouce
-                //œ˚∂∂
+                //Ê∂àÊäñ
                 HAL_Delay(20);
                 if(HAL_GPIO_ReadPin(KEY_GPIO_Port, KEY_Pin) == GPIO_PIN_SET)
                 {
