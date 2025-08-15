@@ -1,7 +1,7 @@
 /**
   ****************************(C) COPYRIGHT 2019 DJI****************************
   * @file       oled_task.c/h
-  * @brief      OLED show error value.oledÆÁÄ»ÏÔÊ¾´íÎóÂë
+  * @brief      OLED show error value.oledÃ†ÃÃ„Â»ÃÃ”ÃŠÂ¾Â´Ã­ÃÃ³Ã‚Ã«
   * @note       
   * @history
   *  Version    Date            Author          Modification
@@ -40,7 +40,7 @@ static uint8_t refresh_tick = 0;
   * @retval         none
   */
 /**
-  * @brief          oledÈÎÎñ
+  * @brief          oledÃˆÃÃÃ±
   * @param[in]      pvParameters: NULL
   * @retval         none
   */

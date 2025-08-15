@@ -65,7 +65,7 @@ void bsp_led_toggle(void);
   * @retval         none
   */
 /**
-  * @brief          ·´×ªºìµÆ£¬ÂÌµÆºÍÀ¶µÆµçÆ½
+  * @brief          åè½¬çº¢ç¯ï¼Œç»¿ç¯å’Œè“ç¯ç”µå¹³
   * @param[in]      none
   * @retval         none
   */
@@ -84,8 +84,8 @@ void bsp_led_toggle(void)
   * @retval         none
   */
 /**
-  * @brief          ¶¨Ê±Æ÷ÖÜÆÚ¶¨Ê±»Øµ÷
-  * @param[in]      htim:¶¨Ê±Æ÷Ö¸Õë
+  * @brief          å®šæ—¶å™¨å‘¨æœŸå®šæ—¶å›è°ƒ
+  * @param[in]      htim:å®šæ—¶å™¨æŒ‡é’ˆ
   * @retval         none
   */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)

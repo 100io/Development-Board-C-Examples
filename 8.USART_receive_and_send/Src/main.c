@@ -61,14 +61,14 @@ void SystemClock_Config(void);
 void USART1_IRQHandler(void)  
 {
     volatile uint8_t receive;
-    //receive interrupt ½ÓÊÕÖĞ¶Ï
+    //receive interrupt æ¥æ”¶ä¸­æ–­
     if(huart1.Instance->SR & UART_FLAG_RXNE)
     {
         receive = huart1.Instance->DR;
         HAL_GPIO_TogglePin(LED_R_GPIO_Port, LED_R_Pin);
 
     }
-    //idle interrupt ¿ÕÏĞÖĞ¶Ï
+    //idle interrupt ç©ºé—²ä¸­æ–­
     else if(huart1.Instance->SR & UART_FLAG_IDLE)
     {
         receive = huart1.Instance->DR;
@@ -81,14 +81,14 @@ void USART6_IRQHandler(void)
 {
 
     volatile uint8_t receive;
-    //receive interrupt ½ÓÊÕÖĞ¶Ï
+    //receive interrupt æ¥æ”¶ä¸­æ–­
     if(huart6.Instance->SR & UART_FLAG_RXNE)
     {
         receive = huart6.Instance->DR;
         HAL_GPIO_TogglePin(LED_G_GPIO_Port, LED_G_Pin);
 
     }
-    //idle interrupt ¿ÕÏĞÖĞ¶Ï
+    //idle interrupt ç©ºé—²ä¸­æ–­
     else if(huart6.Instance->SR & UART_FLAG_IDLE)
     {
         receive = huart6.Instance->DR;
@@ -139,7 +139,7 @@ int main(void)
     HAL_GPIO_WritePin(LED_G_GPIO_Port, LED_G_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LED_B_GPIO_Port, LED_B_Pin, GPIO_PIN_RESET);
     //enable receive interrupt and idle interrupt
-    //Ê¹ÄÜ½ÓÊÕÖĞ¶ÏºÍ¿ÕÏĞÖĞ¶Ï
+    //ä½¿èƒ½æ¥æ”¶ä¸­æ–­å’Œç©ºé—²ä¸­æ–­
     __HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);  //receive interrupt
     __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);  //idle interrupt
     __HAL_UART_ENABLE_IT(&huart6, UART_IT_RXNE);  //receive interrupt
@@ -155,7 +155,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
         //send data by usart
-        //´®¿Ú·¢ËÍÊı¾İ
+        //ä¸²å£å‘é€æ•°æ®
         HAL_UART_Transmit(&huart1, "RoboMaster\r\n", 12, 100);
         HAL_Delay(100);
         HAL_UART_Transmit(&huart6, "RoboMaster\r\n", 12, 100);

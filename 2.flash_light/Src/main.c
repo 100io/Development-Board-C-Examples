@@ -68,7 +68,7 @@ void user_delay_ms(uint16_t ms);
   * @retval         none
   */
 /**
-  * @brief          ·´×ªºìµÆ£¬ÂÌµÆºÍÀ¶µÆµçÆ½
+  * @brief          åè½¬çº¢ç¯ï¼Œç»¿ç¯å’Œè“ç¯ç”µå¹³
   * @param[in]      none
   * @retval         none
   */
@@ -85,8 +85,8 @@ void bsp_led_toggle(void)
   * @retval         none
   */
 /**
-  * @brief          Ê¹ÓÃnopº¯ÊıÑÓ³ÙÒ»¶ÎÊ±¼ä
-  * @param[in]      us:usÎ¢Ãë
+  * @brief          ä½¿ç”¨nopå‡½æ•°å»¶è¿Ÿä¸€æ®µæ—¶é—´
+  * @param[in]      us:uså¾®ç§’
   * @retval         none
   */
 void nop_delay_us(uint16_t us)
@@ -120,8 +120,8 @@ void nop_delay_us(uint16_t us)
   * @retval         none
   */
 /**
-  * @brief          Ê¹ÓÃnop_delay_usº¯ÊıÑÓ³ÙÒ»¶ÎÊ±¼ä
-  * @param[in]      ms:msºÁÃë
+  * @brief          ä½¿ç”¨nop_delay_uså‡½æ•°å»¶è¿Ÿä¸€æ®µæ—¶é—´
+  * @param[in]      ms:msæ¯«ç§’
   * @retval         none
   */
 void nop_delay_ms(uint16_t ms)
@@ -140,8 +140,8 @@ void nop_delay_ms(uint16_t ms)
   * @retval         none
   */
 /**
-  * @brief          Ê¹ÓÃÑ­»·¼ÆÊıÑÓ³ÙÒ»¶ÎÊ±¼ä
-  * @param[in]      us:usÎ¢Ãë
+  * @brief          ä½¿ç”¨å¾ªç¯è®¡æ•°å»¶è¿Ÿä¸€æ®µæ—¶é—´
+  * @param[in]      us:uså¾®ç§’
   * @retval         none
   */
 void user_delay_us(uint16_t us)
@@ -161,8 +161,8 @@ void user_delay_us(uint16_t us)
   * @retval         none
   */
 /**
-  * @brief          Ê¹ÓÃuser_delay_usº¯ÊıÑÓ³ÙÒ»¶ÎÊ±¼ä
-  * @param[in]      ms:msºÁÃë
+  * @brief          ä½¿ç”¨user_delay_uså‡½æ•°å»¶è¿Ÿä¸€æ®µæ—¶é—´
+  * @param[in]      ms:msæ¯«ç§’
   * @retval         none
   */
 void user_delay_ms(uint16_t ms)

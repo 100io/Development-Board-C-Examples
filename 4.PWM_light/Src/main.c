@@ -93,10 +93,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
     //start tim
-    //开启定时器
+    //寮�鍚畾鏃跺櫒
     HAL_TIM_Base_Start(&htim5);
     //start pwm channel
-    //开启PWM通道
+    //寮�鍚疨WM閫氶亾
     HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_2);
     HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_3);

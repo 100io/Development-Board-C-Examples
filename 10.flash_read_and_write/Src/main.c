@@ -96,16 +96,16 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
     //erase flash page
-    //²Á³ıflashÒ³
+    //æ“¦é™¤flashé¡µ
     flash_erase_address(USER_FLASH_ADDRESS, 1);
     //read data from flash, before writing data
-    //ÔÚĞ´Êı¾İÖ®Ç°,´Óflash¶ÁÈ¡Êı¾İ
+    //åœ¨å†™æ•°æ®ä¹‹å‰,ä»flashè¯»å–æ•°æ®
     flash_read(USER_FLASH_ADDRESS, (uint32_t *)after_erase_data, (FLASH_DATA_LENGHT + 3) / 4);
     //write data to flash
-    //ÍùflashĞ´Êı¾İ
+    //å¾€flashå†™æ•°æ®
     flash_write_single_address(USER_FLASH_ADDRESS, (uint32_t *)write_data, (FLASH_DATA_LENGHT + 3) / 4);
     //read data from flash, after writing data
-    //ÔÚĞ´Êı¾İÖ®ºó,´Óflash¶ÁÈ¡Êı¾İ
+    //åœ¨å†™æ•°æ®ä¹‹å,ä»flashè¯»å–æ•°æ®
     flash_read(USER_FLASH_ADDRESS, (uint32_t *)after_write_data, (FLASH_DATA_LENGHT + 3) / 4);
 
 

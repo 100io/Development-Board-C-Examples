@@ -6,7 +6,7 @@
 #include "pid.h"
 #include "bsp_imu_pwm.h"
 
-#define IMU_temp_PWM(pwm)  imu_pwm_set(pwm)                    //pwm¸ø¶¨
+#define IMU_temp_PWM(pwm)  imu_pwm_set(pwm)                    //pwmç»™å®š
 
 #define TEMPERATURE_PID_KP 1600.0f //kp of temperature control PID 
 #define TEMPERATURE_PID_KI 0.2f    //ki of temperature control PID 
@@ -18,7 +18,7 @@
 
 extern SPI_HandleTypeDef hspi1;
 
-//task handler ÈÎÎñ¾ä±ú
+//task handler ä»»åŠ¡å¥æŸ„
 TaskHandle_t INS_task_local_handler;
 
 
@@ -37,17 +37,17 @@ pid_type_def imu_temp_pid;
   * @retval         none
   */
 /**
-  * @brief          bmi088ÎÂ¶È¿ØÖÆ
+  * @brief          bmi088æ¸©åº¦æ§åˆ¶
   * @param[in]      argument: NULL
   * @retval         none
   */
 void imu_temp_control_task(void const * argument)
 {
     osDelay(500);
-    //pid init  PID³õÊ¼»¯
+    //pid init  PIDåˆå§‹åŒ–
     PID_init(&imu_temp_pid, PID_POSITION, imu_temp_PID, TEMPERATURE_PID_MAX_OUT, TEMPERATURE_PID_MAX_IOUT);
 
-    //bmi088 init. bmi088³õÊ¼»¯
+    //bmi088 init. bmi088åˆå§‹åŒ–
     while(BMI088_init())
     {
         ;
@@ -60,21 +60,21 @@ void imu_temp_control_task(void const * argument)
         Error_Handler();
     }
     //get task handle, must enable 'xTaskGetHandle' in cubeMX
-    //»ñÈ¡ÈÎÎñ¾ä±ú£¬±ØĞëÔÚcubeMXÊ¹ÄÜ'xTaskGetHandle'
+    //è·å–ä»»åŠ¡å¥æŸ„ï¼Œå¿…é¡»åœ¨cubeMXä½¿èƒ½'xTaskGetHandle'
     INS_task_local_handler = xTaskGetHandle(pcTaskGetName(NULL));
     imu_start_flag = 1;
     while(1)
     {
         //wait for task waked up
-        //µÈ´ıÈÎÎñ±»»½ĞÑ
+        //ç­‰å¾…ä»»åŠ¡è¢«å”¤é†’
         while (ulTaskNotifyTake(pdTRUE, portMAX_DELAY) != pdPASS)
         {
         }
-        //read data.¶ÁÈ¡Êı¾İ
+        //read data.è¯»å–æ•°æ®
         BMI088_read(gyro, accel, &temp);
 
         uint16_t tempPWM;
-        //pid calculate. PID¼ÆËã
+        //pid calculate. PIDè®¡ç®—
         PID_calc(&imu_temp_pid, temp, 40.0f);
         if (imu_temp_pid.out < 0.0f)
         {
@@ -95,7 +95,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
         if(imu_start_flag)
         {
             //wake up the task
-            //»½ĞÑÈÎÎñ
+            //å”¤é†’ä»»åŠ¡
             if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
             {
                 static BaseType_t xHigherPriorityTaskWoken;

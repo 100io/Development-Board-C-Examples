@@ -100,10 +100,10 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
     //start tim
-    //开启定时器
+    //寮�鍚畾鏃跺櫒
     HAL_TIM_Base_Start(&htim4);
     //start pwm channel
-    //开启PWM通道
+    //寮�鍚疨WM閫氶亾
     HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
   /* USER CODE END 2 */
 
